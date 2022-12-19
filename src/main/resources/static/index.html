@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remote Server Spring App</title>
+    <script>
+        window.onload = function() {
+            document.getElementById("hostId").innerHTML = "Hostname: " + document.location.hostname.toString().replace(/^(.*\/\/[^\/?#]*).*$/,"$1");;
+        }
+    </script>
+</head>
+<body>
+<h1 style="text-align: center">Remote Server Spring App is running</h1></br>
+ <p style="text-align: center;font-size: 25px" id="hostId"/>
+</body>
+</html>
