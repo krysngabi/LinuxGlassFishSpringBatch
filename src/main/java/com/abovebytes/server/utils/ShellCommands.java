@@ -1,12 +1,16 @@
 package com.abovebytes.server.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+@Slf4j
 public class ShellCommands {
     public static String executeBashCommand(String command) {
         String success = "failed";
         System.out.println("Executing BASH command:\n   " + command);
+        log.info("Executing BASH command:\n   {}", command);
         Runtime r = Runtime.getRuntime();
         // Use bash -c so we can handle things like multi commands separated by ; and
         // things like quotes, $, |, and \. My tests show that command comes as
@@ -23,12 +27,14 @@ public class ShellCommands {
 
             while ((line = b.readLine()) != null) {
                 System.out.println(line);
+                log.info("{} \n", line);
             }
 
             b.close();
             success = "success";
         } catch (Exception e) {
             System.err.println("Failed to execute bash with command: " + command);
+            log.error("Failed to execute bash with command: {} \n", command);
             e.printStackTrace();
         }
         return success;
